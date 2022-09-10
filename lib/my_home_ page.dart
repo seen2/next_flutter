@@ -1,9 +1,15 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:next_flutter/controller/tap_controller.dart';
 
 
+// ignore: must_be_immutable
 class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+  MyHomePage({Key? key}) : super(key: key);
+
+  //Dependency Injection
+  TapController tapController=Get.put(TapController());
 
   @override
   Widget build(BuildContext context) {
