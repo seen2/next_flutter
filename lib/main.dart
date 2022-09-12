@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:next_flutter/views/product_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,13 +19,10 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return  MaterialApp(
       debugShowCheckedModeBanner: false,
         home: Scaffold(
-      body: Container(
-        alignment: Alignment.center,
-        child: const Text("GetX"),
-      ),
+      body:  ProductScreen(),
     ));
   }
 }
