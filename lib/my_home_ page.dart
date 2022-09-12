@@ -3,13 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:next_flutter/controller/tap_controller.dart';
 
-
 // ignore: must_be_immutable
 class MyHomePage extends StatelessWidget {
   MyHomePage({Key? key}) : super(key: key);
 
   //Dependency Injection
-  TapController tapController=Get.put(TapController());
+  final TapController controller = Get.put(TapController());
 
   @override
   Widget build(BuildContext context) {
@@ -22,11 +21,14 @@ class MyHomePage extends StatelessWidget {
             width: double.maxFinite,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: const [
-                MyContainer(),
-                MyContainer(),
-                MyContainer(),
-                MyContainer(),
+              children: [
+                GetBuilder<TapController>(builder: (tapController){
+                  return  MyContainerView(value: controller.x);
+                }),
+                MyContainer(onTap: () => controller.increaseX()),
+                // MyContainer(),
+                // MyContainer(),
+                // MyContainer(),
               ],
             )),
       ),
@@ -34,15 +36,15 @@ class MyHomePage extends StatelessWidget {
   }
 }
 
-
 class MyContainer extends StatelessWidget {
-  const MyContainer({
-    Key? key,
-  }) : super(key: key);
+  final Function onTap;
+
+  const MyContainer({Key? key, required this.onTap}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      onTap: (() => onTap()),
       child: Container(
         height: 100,
         width: double.maxFinite,
@@ -54,6 +56,31 @@ class MyContainer extends StatelessWidget {
             child: Text(
           "Tap",
           style: TextStyle(color: Colors.white, fontSize: 20),
+        )),
+      ),
+    );
+  }
+}
+
+class MyContainerView extends StatelessWidget {
+  final int value;
+
+  const MyContainerView({Key? key, required this.value}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      child: Container(
+        height: 100,
+        width: double.maxFinite,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: Colors.teal,
+        ),
+        child: Center(
+            child: Text(
+          value.toString(),
+          style: const TextStyle(color: Colors.white, fontSize: 20),
         )),
       ),
     );
