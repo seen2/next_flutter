@@ -3,12 +3,21 @@ import 'package:next_flutter/model/product_model.dart';
 
 class ProductController extends GetxController {
   List<Product> productData = [];
+  List<Product> cartItems= List<Product>.empty().obs;
 
   @override
   void onInit() {
     super.onInit();
     fetchProductData();
   }
+
+  addProductToCart(Product product){
+    cartItems.add(product);
+  }
+
+  int get numberOfCartItems => cartItems.length;
+
+  double get totalPrice =>cartItems.fold<double>(0,(previousValue, element) => previousValue+element.price);
 
   fetchProductData() async {
     await Future.delayed(const Duration(seconds: 3));

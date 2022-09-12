@@ -19,7 +19,10 @@ class ProductScreen extends StatelessWidget {
               ElevatedButton.icon(
                 onPressed: () {},
                 icon: const Icon(Icons.shopping_cart),
-                label: const Text("0"),
+                label: GetX<ProductController>(
+                  builder: (controller) =>
+                      Text(controller.numberOfCartItems.toString()),
+                ),
               )
             ],
           )
@@ -47,7 +50,7 @@ class ProductScreen extends StatelessWidget {
                               productController.productData[index].productName
                                   .toString(),
                               style: const TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 25),
+                                  fontWeight: FontWeight.bold, fontSize: 21),
                             ),
                             ElevatedButton(
                                 onPressed: () {},
@@ -58,13 +61,15 @@ class ProductScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              productController.productData[index].price
-                                  .toString(),
+                              "\$${productController.productData[index].price}",
                               style: const TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 18),
                             ),
                             ElevatedButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  productController.addProductToCart(
+                                      controller.productData[index]);
+                                },
                                 child: const Text("Add to Cart"))
                           ],
                         )
@@ -75,6 +80,15 @@ class ProductScreen extends StatelessWidget {
                 itemCount: controller.productData.length,
               ),
             ),
+          ),
+          SizedBox(
+            height: 30,
+            child: GetX<ProductController>(
+                builder: (controller) => Text(
+                      "Totoal: \$${controller.totalPrice}",
+                      style: const TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 18),
+                    )),
           )
         ],
       ),
