@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:next_flutter/widgets/app_feature_card.dart';
 import 'package:next_flutter/widgets/my_button_widget.dart';
 
 class MyHomePage extends StatelessWidget {
@@ -13,18 +14,17 @@ class MyHomePage extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.only(top: 70),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+        body: SafeArea(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            // mainAxisAlignment: MainAxisAlignment.center,
             children: const [
               MyButton(title: "Login"),
-              SizedBox(
-                width: 10,
-              ),
+              Text("Don't Have account?",style: TextStyle(color: Colors.grey),),
               MyButton(
                 title: "SignUp",
-              )
+              ),
+               MyAppFeatureCard()
             ],
           ),
         ),
