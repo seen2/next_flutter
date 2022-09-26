@@ -7,7 +7,7 @@ class TodoList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Second Route'),
+        title: const Text('Home'),
       ),
       body: Center(
         child: ElevatedButton(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:next_flutter/views/todo_slist_page.dart';
+import 'package:next_flutter/views/login_page.dart';
+import 'package:next_flutter/views/registration_page.dart';
 import 'package:next_flutter/widgets/app_feature_card.dart';
 import 'package:next_flutter/widgets/my_button_widget.dart';
 
@@ -18,15 +19,19 @@ class MyHomePage extends StatelessWidget {
                 title: "Login",
                 onPressed: () => Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const TodoList()),
+                  MaterialPageRoute(builder: (context) => const MyLoginPage()),
                 ),
               ),
               const Text(
                 "Don't Have account?",
                 style: TextStyle(color: Colors.grey),
               ),
-              const MyButton(
+               MyButton(
                 title: "SignUp",
+                onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const MyRegisterPage()),
+                ),
               ),
               const MyAppFeatureCard()
             ],
