@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:next_flutter/views/todo_slist_page.dart';
 import 'package:next_flutter/widgets/app_feature_card.dart';
 import 'package:next_flutter/widgets/my_button_widget.dart';
 
@@ -13,22 +14,33 @@ class MyHomePage extends StatelessWidget {
         primaryColor: const Color.fromARGB(255, 189, 130, 2),
       ),
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
+      home: Builder(
+        builder: (context) => Scaffold(
         body: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             // mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              MyButton(title: "Login"),
-              Text("Don't Have account?",style: TextStyle(color: Colors.grey),),
+            children: [
               MyButton(
+                title: "Login",
+                onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const TodoList()),
+                ),
+              ),
+              const Text(
+                "Don't Have account?",
+                style: TextStyle(color: Colors.grey),
+              ),
+              const MyButton(
                 title: "SignUp",
               ),
-               MyAppFeatureCard()
+              const MyAppFeatureCard()
             ],
           ),
         ),
       ),
+      )
     );
   }
 }

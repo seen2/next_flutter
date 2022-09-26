@@ -13,6 +13,7 @@ class TodoList extends StatelessWidget {
         child: ElevatedButton(
           onPressed: () {
             // Navigate back to first route when tapped.
+            Navigator.pop(context);
           },
           child: const Text('Go back!'),
         ),
