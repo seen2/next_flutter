@@ -8,14 +8,7 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        brightness: Brightness.dark,
-        primaryColor: const Color.fromARGB(255, 189, 130, 2),
-      ),
-      debugShowCheckedModeBanner: false,
-      home: Builder(
-        builder: (context) => Scaffold(
+    return  Scaffold(
         body: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -39,8 +32,6 @@ class MyHomePage extends StatelessWidget {
             ],
           ),
         ),
-      ),
-      )
     );
   }
 }
