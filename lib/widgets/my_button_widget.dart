@@ -14,7 +14,6 @@ class MyButton extends StatelessWidget {
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
             minimumSize: Size(MediaQuery.of(context).size.width, 50),
-            maximumSize: const Size(500, 50),
             side: const BorderSide(style: BorderStyle.solid)),
         onPressed: () {
           onPressed!();
