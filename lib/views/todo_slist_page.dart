@@ -1,22 +1,20 @@
 import 'package:flutter/material.dart';
 
+
 class TodoList extends StatelessWidget {
-  const TodoList({Key? key}) : super(key: key);
+  const TodoList({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home'),
-      ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            // Navigate back to first route when tapped.
-            Navigator.pop(context);
-          },
-          child: const Text('Go back!'),
-        ),
+    return Center(
+      child: ElevatedButton(
+        onPressed: () {
+          // Navigate back to first route when tapped.
+          Navigator.pop(context);
+        },
+        child: const Text('Go back!'),
       ),
     );
   }
